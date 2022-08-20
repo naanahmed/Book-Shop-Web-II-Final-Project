@@ -1,13 +1,9 @@
 ﻿using Book_Shop__Web_II_Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Book_Shop__Web_II_Final_Project.Controllers
+namespace Book_Shop_Web_II_Final_Project.Controllers
 {
     public class HomeController : Controller
     {
