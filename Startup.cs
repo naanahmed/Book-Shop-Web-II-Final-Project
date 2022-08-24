@@ -23,6 +23,7 @@ namespace Book_Shop_Web_II_Final_Project
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
         }
 
