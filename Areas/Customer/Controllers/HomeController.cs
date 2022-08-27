@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace Book_Shop_Web_II_Final_Project.Controllers
+namespace Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {

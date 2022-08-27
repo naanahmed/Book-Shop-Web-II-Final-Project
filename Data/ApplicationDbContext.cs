@@ -1,4 +1,4 @@
-﻿using Book_Shop.Models;
+﻿using Areas.Admin.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Shop.Data

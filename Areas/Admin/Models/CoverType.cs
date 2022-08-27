@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace Book_Shop.Models
+
+namespace Areas.Admin.Models
 {
     public class CoverType
     {

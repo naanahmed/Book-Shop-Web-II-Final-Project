@@ -1,10 +1,10 @@
-﻿using Book_Shop.Data;
-using Book_Shop.Models;
+﻿using Areas.Admin.Models;
+using Book_Shop.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Book_Shop.Controllers
+namespace Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
