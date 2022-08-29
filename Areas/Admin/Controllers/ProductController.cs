@@ -20,44 +20,28 @@ namespace Areas.Admin.Controllers
             IEnumerable<Product> objProductList = _db.Products.ToList();
             return View(objProductList);
         }
-
+       
         //GET
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            return View();
-        }
-        //POST
-        [HttpPost]
-        public IActionResult Create(Product obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Products.Add(obj);
-                _db.SaveChanges();
-                TempData["Success"] = "Product created successfully";
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-
-        //GET
-        public IActionResult Edit(int? id)
-        {
+            Product product = new();
             if (id == null || id == 0)
             {
-                return NotFound();
+                //Create Product
+                return View(product);
             }
-            var ProductFromDb = _db.Products.Find(id);
-
-            if (ProductFromDb == null)
+            else
             {
-                return NotFound();
+                //Update Product
             }
-            return View(ProductFromDb);
+              
+            return View(product);
         }
+
+
         //POST
         [HttpPost]
-        public IActionResult Edit(Product obj)
+        public IActionResult Upsert(Product obj)
         {
             if (ModelState.IsValid)
             {
