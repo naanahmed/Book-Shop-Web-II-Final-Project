@@ -1,6 +1,7 @@
 ﻿using Areas.Admin.Models;
 using Book_Shop.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,21 +21,34 @@ namespace Areas.Admin.Controllers
             IEnumerable<Product> objProductList = _db.Products.ToList();
             return View(objProductList);
         }
-       
+
         //GET
         public IActionResult Upsert(int? id)
         {
             Product product = new();
+            IEnumerable<SelectListItem> objCategoryList = _db.Categories.ToList().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+            IEnumerable<SelectListItem> objCoverTypeList = _db.CoverTypes.ToList().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
             if (id == null || id == 0)
             {
                 //Create Product
+                ViewBag.objCategoryList = objCategoryList;
                 return View(product);
             }
             else
             {
                 //Update Product
             }
-              
+
             return View(product);
         }
 
