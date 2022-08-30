@@ -3,7 +3,7 @@
 
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
     <div class="row pb-2">
-        <h2 class="text-primary">@(Id !=0?"Update":"Create") Product</h2>
+        <h2 class="text-primary">@(Model.Id !=0?"Update":"Create") Product</h2>
         <hr />
     </div>
     <div class="mb-3">
@@ -33,7 +33,7 @@
     </div>
     <div class="mb-3">
         <label asp-for="ImageURL"></label>
-        <input type="file" class="form-control">
+        <input type="file" id="uploadBox" name="file" class="form-control">
     </div>
     <div class="mb-3">
         <label asp-for="CategoryId"></label>
@@ -44,20 +44,26 @@
     </div>
     <div class="mb-3">
         <label asp-for="CoverTypeId"></label>
-        <select asp-for="CoverTypeId" asp-items="@ViewData["objCoverTypeList"] as IEnumerable<SelectListItem>" class="form-select">
-            <option disabled selected> --Select CoverType --</option>
+        <select asp-for="CoverTypeId" asp-items="ViewBag.objCoverTypeList" class="form-select">
+            <option disabled selected> --Select Cover Type --</option>
         </select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
+        <span asp-validation-for="CoverTypeId" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
-    <a asp-controller="CoverType" asp-action="Index" class="btn btn-secondary" style="width:150px">
-        Back
+    @if (Model.Id !=0){
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+    }    
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+    Back
     </a>
 </form>
 
 @section Scripts{
     @{
-        <partial name="_ValidationScriptsPartial.cshtml" />
+    <partial name="_ValidationScriptsPartial.cshtml" />
     }
 }
 

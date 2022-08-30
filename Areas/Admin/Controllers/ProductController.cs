@@ -1,9 +1,12 @@
 ﻿using Areas.Admin.Models;
 using Book_Shop.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Areas.Admin.Controllers
@@ -11,10 +14,12 @@ namespace Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProductController(ApplicationDbContext db)
+        public ProductController(ApplicationDbContext db, IWebHostEnvironment hostEnvironment)
         {
             _db = db;
+            _hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -43,7 +48,7 @@ namespace Areas.Admin.Controllers
             {
                 //Create Product
                 ViewBag.objCategoryList = objCategoryList;
-                ViewData["CoverTypeList"] = objCoverTypeList;
+                ViewBag.objCoverTypeList = objCoverTypeList;
                 return View(product);
             }
             else
@@ -61,9 +66,22 @@ namespace Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Products.Update(obj);
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"Images\Product");
+                    var extension = Path.GetExtension(file.FileName);
+
+                    using (var filestreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        file.CopyTo(filestreams);
+                    }
+                    obj.ImageURL = @"\Images\Product\" + fileName + extension;
+                }
+                _db.Products.Add(obj);
                 _db.SaveChanges();
-                TempData["Success"] = "Product updated successfully";
+                TempData["Success"] = "Product created successfully";
                 return RedirectToAction("Index");
             }
             return View();
