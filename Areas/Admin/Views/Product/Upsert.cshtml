@@ -1,9 +1,9 @@
 ﻿@using Areas.Admin.Models;
 @model Product
 
-<form method="post" asp-action="Upsert">
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
     <div class="row pb-2">
-        <h2 class="text-primary"> Edit Cover Type</h2>
+        <h2 class="text-primary">@(Id !=0?"Update":"Create") Product</h2>
         <hr />
     </div>
     <div class="mb-3">
@@ -28,8 +28,12 @@
     </div>
     <div class="mb-3">
         <label asp-for="ListPrice"></label>
-        <textarea asp-for="ListPrice" rows="5" class="form-control"></textarea>
+        <input asp-for="ListPrice" class="form-control"></input>
         <span asp-validation-for="ListPrice" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ImageURL"></label>
+        <input type="file" class="form-control">
     </div>
     <div class="mb-3">
         <label asp-for="CategoryId"></label>

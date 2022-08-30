@@ -1,5 +1,6 @@
 ﻿using Areas.Admin.Models;
 using Book_Shop.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace Areas.Admin.Controllers
 
         //POST
         [HttpPost]
-        public IActionResult Upsert(Product obj)
+        public IActionResult Upsert(Product obj, IFormFile file)
         {
             if (ModelState.IsValid)
             {
