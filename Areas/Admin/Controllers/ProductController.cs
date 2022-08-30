@@ -42,6 +42,7 @@ namespace Areas.Admin.Controllers
             {
                 //Create Product
                 ViewBag.objCategoryList = objCategoryList;
+                ViewData["CoverTypeList"] = objCoverTypeList;
                 return View(product);
             }
             else
