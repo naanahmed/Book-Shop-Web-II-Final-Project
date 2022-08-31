@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +19,6 @@ namespace Areas.Admin.Controllers
         public ProductController(ApplicationDbContext db, IWebHostEnvironment hostEnvironment)
         {
             _db = db;
-            _db.Products.Include(u => u.Category);
             _hostEnvironment = hostEnvironment;
         }
 
