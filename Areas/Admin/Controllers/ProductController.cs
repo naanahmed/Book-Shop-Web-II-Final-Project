@@ -54,6 +54,10 @@ namespace Areas.Admin.Controllers
             else
             {
                 //Update Product
+                ViewBag.objCategoryList = objCategoryList;
+                ViewBag.objCoverTypeList = objCoverTypeList;
+                var ProductFromDb = _db.Products.Find(id);
+                return View(ProductFromDb);
             }
 
             return View(product);
