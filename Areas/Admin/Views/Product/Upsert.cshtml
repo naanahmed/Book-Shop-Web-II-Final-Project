@@ -7,12 +7,10 @@
 
     <div class="row">
         <div class="col-10">
-            <div class="border p-3 mt-4 row"> 
                 <div class="col-12 pb-2">
                     <h2 class="text-primary">@(Model.Id !=0?"Update":"Create") Product</h2>
                     <hr />
                 </div>
-            </div>
             <div class="mb-3">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" />
@@ -71,6 +69,10 @@
         </div>
 
         <div class="col-2">
+            </br>
+            </br>
+            </br>
+            </br>
             <img src="@Model.ImageURL" width="100%" style="border-radius:5px; border:1px solid" />
         </div>
     </div>
