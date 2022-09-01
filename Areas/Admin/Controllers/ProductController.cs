@@ -82,7 +82,7 @@ namespace Areas.Admin.Controllers
                         var OldImagePath = Path.Combine(wwwRootPath, obj.ImageURL.TrimStart('\\'));
                         if (System.IO.File.Exists(OldImagePath))
                         {
-                           System.IO.File.Delete(OldImagePath);
+                            System.IO.File.Delete(OldImagePath);
                         }
                     }
 
