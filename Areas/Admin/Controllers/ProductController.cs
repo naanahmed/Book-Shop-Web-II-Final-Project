@@ -77,13 +77,29 @@ namespace Areas.Admin.Controllers
                     var uploads = Path.Combine(wwwRootPath, @"Images\Product");
                     var extension = Path.GetExtension(file.FileName);
 
+                    if (obj.ImageURL != null)
+                    {
+                        var OldImagePath = Path.Combine(wwwRootPath, obj.ImageURL.TrimStart('\\'));
+                        if (System.IO.File.Exists(OldImagePath))
+                        {
+                           System.IO.File.Delete(OldImagePath);
+                        }
+                    }
+
                     using (var filestreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         file.CopyTo(filestreams);
                     }
                     obj.ImageURL = @"\Images\Product\" + fileName + extension;
                 }
-                _db.Products.Add(obj);
+                if (obj.Id == 0)
+                {
+                    _db.Products.Add(obj);
+                }
+                else
+                {
+                    _db.Products.Update(obj);
+                }
                 _db.SaveChanges();
                 TempData["Success"] = "Product created successfully";
                 return RedirectToAction("Index");
