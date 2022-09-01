@@ -95,13 +95,15 @@ namespace Areas.Admin.Controllers
                 if (obj.Id == 0)
                 {
                     _db.Products.Add(obj);
+                    TempData["Success"] = "Product created successfully";
                 }
                 else
                 {
                     _db.Products.Update(obj);
+                    TempData["Success"] = "Product updated successfully";
                 }
                 _db.SaveChanges();
-                TempData["Success"] = "Product created successfully";
+                
                 return RedirectToAction("Index");
             }
             return View();
