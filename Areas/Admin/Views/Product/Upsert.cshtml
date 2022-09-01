@@ -1,61 +1,61 @@
 ﻿@using Areas.Admin.Models;
 @model Product
 
-<form method="post" asp-action="Upsert" enctype="multipart/form-data"/>
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
     <input asp-for="Id" hidden />
     <input asp-for="ImageURL" hidden />
 
     <div class="row">
         <div class="col-10">
             <div class="border p-3 mt-4 row"> 
+                <div class="col-12 pb-2">
+                    <h2 class="text-primary">@(Model.Id !=0?"Update":"Create") Product</h2>
+                    <hr />
+                </div>
             </div>
-        <div class="col-12 pb-2">
-          <h2 class="text-primary">@(Model.Id !=0?"Update":"Create") Product</h2>
-          <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Description"></label>
-            <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ISBN"></label>
-            <input asp-for="ISBN" class="form-control" />
-            <span asp-validation-for="ISBN" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Author"></label>
-            <input asp-for="Author" class="form-control" />
-            <span asp-validation-for="Author" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ListPrice"></label>
-            <input asp-for="ListPrice" class="form-control">
-            <span asp-validation-for="ListPrice" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ImageURL"></label>
-            <input type="file" id="uploadBox" name="file" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label asp-for="CategoryId"></label>
-            <select asp-for="CategoryId" asp-items="ViewBag.objCategoryList" class="form-select">
-                <option disabled selected> --Select Category --</option>
-            </select>
-            <span asp-validation-for="CategoryId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="CoverTypeId"></label>
-            <select asp-for="CoverTypeId" asp-items="ViewBag.objCoverTypeList" class="form-select">
-                <option disabled selected> --Select Cover Type --</option>
-            </select>
-            <span asp-validation-for="CoverTypeId" class="text-danger"></span>
-        </div>
+            <div class="mb-3">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ISBN"></label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Author"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ListPrice"></label>
+                <input asp-for="ListPrice" class="form-control">
+                <span asp-validation-for="ListPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ImageURL"></label>
+                <input type="file" id="uploadBox" name="file" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" asp-items="ViewBag.objCategoryList" class="form-select">
+                    <option disabled selected> --Select Category --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CoverTypeId"></label>
+                <select asp-for="CoverTypeId" asp-items="ViewBag.objCoverTypeList" class="form-select">
+                    <option disabled selected> --Select Cover Type --</option>
+                </select>
+                <span asp-validation-for="CoverTypeId" class="text-danger"></span>
+            </div>
             @if (Model.Id !=0)
             {
                 <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
@@ -67,6 +67,7 @@
             <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
                 Back
              </a>
+        
         </div>
 
         <div class="col-2">
@@ -76,10 +77,9 @@
 
     
 </form>
-
 @section Scripts{
     @{
-        <partial name="_ValidationScriptsPartial.cshtml" />
+                <partial name="_ValidationScriptsPartial.cshtml" />
     }
 }
 
