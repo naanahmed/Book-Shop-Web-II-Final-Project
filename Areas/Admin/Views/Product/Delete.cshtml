@@ -1,0 +1,26 @@
+﻿@using Microsoft.EntityFrameworkCore;
+@using Areas.Admin.Models;
+
+@model Product
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    <div class="row pb-2">
+        <h2 class="text-primary"> Delete Product</h2>
+        <hr />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" disabled class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Back
+    </a>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}
