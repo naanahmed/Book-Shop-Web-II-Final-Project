@@ -103,7 +103,7 @@ namespace Areas.Admin.Controllers
                     TempData["Success"] = "Product updated successfully";
                 }
                 _db.SaveChanges();
-                
+
                 return RedirectToAction("Index");
             }
             return View();
