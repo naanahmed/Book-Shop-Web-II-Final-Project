@@ -16,9 +16,8 @@ namespace Areas.Customer.Controllers
         private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db, IWebHostEnvironment hostEnvironment)
+        public HomeController(ApplicationDbContext db, IWebHostEnvironment hostEnvironment)
         {
-            _logger = logger;
             _db = db;
             _hostEnvironment = hostEnvironment;
         }

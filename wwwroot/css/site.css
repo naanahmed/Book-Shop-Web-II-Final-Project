@@ -17,6 +17,7 @@ a.navbar-brand {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  
 }
 @media (min-width: 768px) {
   html {
@@ -45,6 +46,7 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+
 }
 
 body {

@@ -1,7 +1,6 @@
 ﻿using Areas.Admin.Models;
 using Book_Shop.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Areas.Admin.Controllers
@@ -17,7 +16,7 @@ namespace Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Category> objCategoryList = _db.Categories.ToList();
+            var objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
 
