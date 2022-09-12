@@ -1,0 +1,54 @@
+﻿@using Book_Shop.Areas
+@using Microsoft.EntityFrameworkCore;
+@model ShoppingCart;
+
+<form method="post">
+        <div class="card  container pt-4">
+            <div class="card-header bg-primary text-light ml-0  row ">
+                <div class="col-12 col-md-6">
+                    <h1 class="text-white-50">@Model.productById.Title</h1>
+                    <p class="text-warning">@Model.productById.Author</p>
+                </div>
+                <div class="col-12 col-md-6 text-end pt-4">
+                    <span class="badge bg-info pt-2" style="height:30px;">@Model.productById.CoverType</span>
+                    <span class="badge bg-warning pt-2" style="height:30px;">@Model.productById.Category</span>
+                </div>
+            </div>
+            <div class="card-body row container">
+                <div class="container rounded p-2">
+                    <div class="row">
+                        <div class="col-8 col-lg-8">
+
+                            <div class="row pl-2">
+                                <h5 class="text-muted">ISBN : @Model.productById.ISBN</h5>
+                            </div>
+                            <div class="row pl-2">
+                                <h5 class="text-muted pb-2">List Price: @Model.productById.ListPrice</h5>
+                            </div>
+
+                            <div class="row pl-2">
+                                <p class="text-secondary">@Model.productById.Description </p>
+                            </div>
+                            <div class="row pl-2">
+                                <div class="col-2 text-primary"><h4>Count</h4></div>
+                                <div class="col-10"><input asp-for="Count" class="form-control"  /></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 offset-lg-1 text-center">
+                            <img src="@Model.productById.ImageURL" style="width:100%" class="rounded" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6 col-md-2 pb-1">
+                        <button type="submit" value="Add to Cart" class="btn btn-primary form-control text-center" style="height:45px;">Add to Cart</button>
+                    </div>
+                    <div class="col-6 col-md-2 pb-1">
+                        <a class="btn btn-success form-control text-center " asp-action="Index" style="height:45px;">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
