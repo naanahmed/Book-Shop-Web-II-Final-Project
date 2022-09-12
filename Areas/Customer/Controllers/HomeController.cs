@@ -1,11 +1,8 @@
-﻿using Areas.Admin.Models;
+﻿using Book_Shop.Areas;
 using Book_Shop.Data;
-using Book_Shop__Web_II_Final_Project.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Areas.Customer.Controllers
@@ -24,14 +21,20 @@ namespace Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> objProductList = _db.Products.ToList();
+            var objProductList = _db.Products.ToList();
             return View(objProductList);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Details(int Id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ShoppingCart cartObject = new()
+            {
+                Count = 1,
+                productById = _db.Products.SingleOrDefault(p => p.Id == Id),
+            };
+            return View(cartObject);
+
         }
+
     }
 }
+
