@@ -2,14 +2,15 @@
 @using Areas.Admin.Models;
 @model IEnumerable<Product>
 
+<body class="bg-light">
 <div class="row pb-3">
     @foreach(var product in Model)
     {
         <div class="col-lg-3 col-md-6">
             <div class="row p-2">
-                <div class="col-12 p-1" style="border:1px solid">
-                    <div class="card">
-                        <img src="@product.ImageURL" style="height:400px;" class="card-img-top rounded img-fluid"/>
+                <div class="col-12 p-1">
+                    <div class="card bg-light">
+                        <img src="@product.ImageURL" style="height:250px;" class="card-img-top rounded img-fluid"/>
                         <div class="pl-1">
                             <p class="card-title h5 text-primary">@product.Title</p>
                             <p class="card-title text-secondary">@product.Author</p>
@@ -25,3 +26,4 @@
         </div>
     }
 </div>
+</body>
