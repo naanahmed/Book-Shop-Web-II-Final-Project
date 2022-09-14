@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Areas.Customer.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,7 +19,6 @@ namespace Areas.Customer.Controllers
             _db = db;
             _hostEnvironment = hostEnvironment;
         }
-
         public IActionResult Index()
         {
             var objProductList = _db.Products.ToList();

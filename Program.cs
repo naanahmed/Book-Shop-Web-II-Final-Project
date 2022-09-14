@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Book_Shop_Web_II_Final_Project
+namespace Book_Shop
 {
     public class Program
     {
