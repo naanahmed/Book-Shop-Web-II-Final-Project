@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Areas.Admin.Controllers
 {
-
+    [Area("Admin")]
     public class CoverTypeController : Controller
     {
         private readonly ApplicationDbContext _db;

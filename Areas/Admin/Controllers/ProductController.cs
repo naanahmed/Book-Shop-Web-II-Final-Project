@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Areas.Admin.Controllers
 {
-
+    [Area("Admin")]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _db;
