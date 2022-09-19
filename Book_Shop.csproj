@@ -70,6 +70,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\Images\Product\" />
   </ItemGroup>

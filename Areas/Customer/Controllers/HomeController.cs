@@ -1,9 +1,12 @@
 ﻿using Book_Shop.Areas;
 using Book_Shop.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using System.Security.Claims;
+using Book_Shop.Areas.Admin.Models;
 
 namespace Areas.Customer.Controllers
 {
@@ -24,14 +27,28 @@ namespace Areas.Customer.Controllers
             var objProductList = _db.Products.ToList();
             return View(objProductList);
         }
-        public IActionResult Details(int Id)
+        public IActionResult Details(int productId)
         {
             ShoppingCart cartObject = new()
             {
                 Count = 1,
-                productById = _db.Products.SingleOrDefault(p => p.Id == Id),
+                ProductId = productId,
+                Product = _db.Products.SingleOrDefault(p => p.Id == productId),
             };
             return View(cartObject);
+
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            shoppingCart.ApplicationUserId = claim.Value;
+
+            _db.Add(shoppingCart);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
 

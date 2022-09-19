@@ -15,7 +15,7 @@
                             <p class="card-title h5 text-primary">@product.Title</p>
                             <p class="card-title text-secondary">@product.Author</p>
                             <p>List Price : @product.ListPrice.ToString()</p>
-                            <a asp-action="Details" class="btn btn-secondary form-control" asp-route-id="@product.Id">
+                            <a asp-action="Details" class="btn btn-secondary form-control" asp-route-productId="@product.Id">
                                 Details
                             </a>   
                         </div>
