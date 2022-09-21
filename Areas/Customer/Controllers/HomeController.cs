@@ -1,4 +1,4 @@
-﻿using Book_Shop.Areas;
+﻿using Book_Shop.Areas.Admin.Models;
 using Book_Shop.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Security.Claims;
-using Book_Shop.Areas.Admin.Models;
 
 namespace Areas.Customer.Controllers
 {
@@ -46,8 +45,9 @@ namespace Areas.Customer.Controllers
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             shoppingCart.ApplicationUserId = claim.Value;
 
-            _db.Add(shoppingCart);
-            _db.SaveChanges();
+            _db.ShoppingCarts.Add(shoppingCart);
+            _db.SaveChangesAsync();
+            TempData["Success"] = "Added to cart";
             return RedirectToAction("Index");
 
         }
