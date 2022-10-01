@@ -1,4 +1,5 @@
-﻿<form method="post">
+﻿@model Book_Shop.Models.ShoppingCartVM
+<form method="post">
 	<br />
 	<div class="container">
 		<div class="card">
@@ -55,26 +56,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-lg-5 offset-lg-1">
-							<h4 class="d-flex justify-content-between align-items-center mb-3">
-								<span class="text-info">Order Summary:</span>
-							</h4>
-							<ul class="list-group mb-3">
-
-								<li class="list-group-item d-flex justify-content-between">
-									<div>
-										<h6 class="my-0">Title</h6>
-										<small class="text-muted">Quantity: Count</small>
-									</div>
-									<span class="text-muted">$$$ </span>
-								</li>
-
-								<li class="list-group-item d-flex justify-content-between bg-light">
-									<small class="text-info">Total </small>
-									<strong class="text-info">$</strong>
-								</li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -84,7 +66,7 @@
 						<p style="color:maroon; font-size:14px;">Estimate Arrival Date: </p>
 					</div>
 					<div class="col-12 col-md-4">
-						<button type="submit" value="Place Order" class="btn btn-primary form-control">Place Order</button>
+						<button asp-action="OrderConfirmation" type="submit" value="Place Order" class="btn btn-primary form-control">Place Order</button>
 					</div>
 				</div>
 			</div>

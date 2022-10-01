@@ -41,21 +41,13 @@ namespace Book_Shop.Areas.Admin.Controllers
         }
         public IActionResult Summary()
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
+            return View();
+        }
 
-            //ShoppingCartVM ShoppingCartVM = new ShoppingCartVM()
-            //{
-            //    ListCart = _db.ShoppingCarts.Include(u => u.Product)
-            //};
-            //foreach (var cart in ShoppingCartVM.ListCart)
-            //{
-            //    ShoppingCartVM.CartTotal += (cart.Product.ListPrice * cart.Count);
+        public IActionResult OrderConfirmation(int id)
+        {
 
-            //}
-
-            //return View(ShoppingCartVM);
             return View();
         }
         public IActionResult Plus(int cartId)
