@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShopWebIIFinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220921201359_AddShoppingCart")]
-    partial class AddShoppingCart
+    [Migration("20221001112238_shoppingcarttable")]
+    partial class shoppingcarttable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
