@@ -21,7 +21,9 @@ namespace Book_Shop.Areas.Admin.Models
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
 
-
-
+        internal object Include(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
