@@ -32,7 +32,7 @@ namespace Areas.Customer.Controllers
             {
                 Count = 1,
                 ProductId = productId,
-                Product = _db.Products.SingleOrDefault(p => p.Id == productId),
+                Product = _db.Products.FirstOrDefault(p => p.Id == productId),
             };
             return View(cartObject);
 
@@ -45,8 +45,30 @@ namespace Areas.Customer.Controllers
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             shoppingCart.ApplicationUserId = claim.Value;
 
-            _db.ShoppingCarts.Add(shoppingCart);
-            _db.SaveChangesAsync();
+
+
+            ShoppingCart cartFromDb = _db.ShoppingCarts.FirstOrDefault(
+                u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId
+                );
+            if (cartFromDb == null)
+            {
+                _db.Add(shoppingCart);
+            }
+            else
+            {
+                int IncrementCount(ShoppingCart shoppingCart, int count)
+                {
+                    shoppingCart.Count += count;
+                    return shoppingCart.Count;
+                }
+                int DecrementCount(ShoppingCart shoppingCart, int count)
+                {
+                    shoppingCart.Count -= count;
+                    return shoppingCart.Count;
+                }
+                IncrementCount(cartFromDb, shoppingCart.Count);
+            }
+            _db.SaveChanges();
             TempData["Success"] = "Added to cart";
             return RedirectToAction("Index");
 

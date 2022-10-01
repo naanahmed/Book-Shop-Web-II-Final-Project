@@ -1,6 +1,7 @@
 ﻿using Areas.Admin.Models;
 using Book_Shop.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,8 @@ namespace Book_Shop.Areas.Admin.Models
         [ForeignKey("ApplicationUserId")]
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
+
+
+
     }
 }
