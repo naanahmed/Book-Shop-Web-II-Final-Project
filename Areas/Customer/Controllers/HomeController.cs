@@ -3,9 +3,11 @@ using Book_Shop.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Areas.Customer.Controllers
 {
@@ -23,9 +25,23 @@ namespace Areas.Customer.Controllers
         }
         public IActionResult Index()
         {
+
             var objProductList = _db.Products.ToList();
             return View(objProductList);
+
+
         }
+
+        public async Task<IActionResult> SearchResults()
+        {
+            return View();
+        }
+        // POST: Searchresults
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return View("Index", await _db.Products.Where(j => j.Title.Contains(SearchPhrase)).ToListAsync());
+        }
+
         public IActionResult Details(int productId)
         {
             ShoppingCart cartObject = new()
